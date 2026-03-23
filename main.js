@@ -42,7 +42,7 @@ scene.add(backLight);
 const loader = new GLTFLoader();
 let witch;
 
-loader.load('/models/witch.glb', (gltf) => {
+loader.load('models/witch.glb', (gltf) => {
   witch = gltf.scene;
   witch.scale.set(12, 12, 12);
 
