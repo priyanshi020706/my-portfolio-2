@@ -1,0 +1,19 @@
+{
+  "name": "my-portfolio-2",
+  "version": "1.0.0",
+  "description": "Cinematic 3D Portfolio using Three.js",
+  "license": "ISC",
+  "author": "Priyanshi Soni",
+  "type": "commonjs",
+  "main": "script.js",
+ "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  
+  },
+  "dependencies": {
+    "gsap": "^3.14.2",
+    "three": "^0.183.2",
+    "vite": "^8.0.1"
+  }}

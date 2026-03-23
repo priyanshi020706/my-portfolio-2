@@ -1,0 +1,306 @@
+/* ===== RESET & BASE ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+  background: #050505; 
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== 3D CANVAS ===== */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  min-height: 100vh;
+  padding: 120px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section:first-child {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== READABILITY BOXES ===== */
+.about-box, .contact-item {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 238, 0.2);
+}
+
+.about-box {
+  max-width: 620px;
+  border-left: 3px solid #00ffee;
+  padding: 30px 36px;
+  border-radius: 0 16px 16px 0;
+}
+
+/* ===== HEADINGS (Shimmer + Milky Way) ===== */
+.title {
+  font-size: clamp(40px, 7vw, 74px);
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ffee, #cc00ff, #ffffff, #00ffee);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ffffff 10%, #00ffee 50%, #cc00ff 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, #00ffee, #cc00ff);
+  border-radius: 2px;
+  box-shadow: 0 0 12px #00ffee, 0 0 30px rgba(0,255,238,0.4);
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 10px #00ffee, 0 0 20px rgba(0,255,238,0.3); }
+  50% { box-shadow: 0 0 20px #00ffee, 0 0 50px rgba(0,255,238,0.6); }
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0, 255, 238, 0.2);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ffee;
+  text-shadow: 0 0 10px rgba(0, 255, 238, 0.5);
+}
+
+.nav-links a {
+  margin: 0 14px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ffee;
+  text-shadow: 0 0 8px #00ffee;
+}
+
+/* ===== SKILLS ===== */
+.skills span {
+  padding: 10px 24px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,255,238,0.2);
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.skills span:hover {
+  transform: scale(1.15) translateY(-4px);
+  box-shadow: 0 0 16px #00ffee;
+  color: #00ffee;
+  border-color: #00ffee;
+}
+
+/* ===== MAGICAL PROJECT CARDS ===== */
+.projects-grid {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  perspective: 1000px;
+  padding: 20px 0;
+}
+
+.card {
+  width: 310px;
+  padding: 30px;
+  border-radius: 24px;
+  background: rgba(10, 10, 20, 0.4); 
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 238, 0.15);
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* Magical Glow Layer */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 238, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card:hover::before { opacity: 1; }
+
+.card:hover {
+  transform: translateY(-15px) scale(1.03) rotateX(5deg);
+  border-color: rgba(0, 255, 238, 0.6);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 238, 0.2),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Animated Project Heading */
+.card h3 {
+  margin: 0 0 15px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #fff, #00ffee, #cc00ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 238, 0.5));
+  animation: shine 3s linear infinite;
+}
+
+.card:hover h3 {
+  animation: titleGlow 1.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 12px #00ffee);
+}
+
+.card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.tags {
+  display: inline-block;
+  font-size: 11px;
+  color: #cc00ff;
+  background: rgba(204, 0, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(204, 0, 255, 0.3);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Magical Links */
+.links { display: flex; gap: 15px; }
+.links a {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(0, 255, 238, 0.1);
+  border: 1px solid rgba(0, 255, 238, 0.3);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #00ffee;
+  transition: all 0.3s;
+}
+
+.links a:hover {
+  background: #00ffee;
+  color: #000 !important;
+  box-shadow: 0 0 15px #00ffee;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  width: fit-content;
+  min-width: 260px;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.contact-item:hover {
+  background: rgba(0,255,238,0.08);
+  transform: translateX(8px);
+  border-color: #00ffee;
+}
+
+.contact-item i { color: #00ffee; font-size: 20px; }
+.contact-item a { color: white; text-decoration: none; }
+
+/* ===== KEYFRAMES ===== */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+@keyframes titleGlow {
+  from { filter: drop-shadow(0 0 5px #00ffee); }
+  to { filter: drop-shadow(0 0 15px #cc00ff); }
+}
