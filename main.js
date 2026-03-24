@@ -1,5 +1,6 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+// Changed these to CDN links so GitHub doesn't ask for package-lock.json
+import * as THREE from 'https://cdn.skypack.dev/three@0.160.0';
+import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
 
 // SCENE
 const scene = new THREE.Scene();
@@ -18,7 +19,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-// LIGHTING - Use 'const' or 'let' so the theme toggle can access them
+// LIGHTING
 const ambient = new THREE.AmbientLight(0xffffff, 1.2);
 scene.add(ambient);
 
@@ -63,29 +64,29 @@ const particlesMaterial = new THREE.PointsMaterial({
 const particles = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particles);
 
-// --- NEW: THEME TOGGLE SYNC ---
-// This part listens to the button in your HTML
+// --- THEME TOGGLE SYNC ---
 const themeBtn = document.getElementById('theme-toggle');
 
 if (themeBtn) {
   themeBtn.addEventListener('click', () => {
-    // We check if the body has the class AFTER the click
-    const isLight = document.body.classList.contains('light-mode');
+    // Small delay to ensure the body class has finished toggling
+    setTimeout(() => {
+        const isLight = document.body.classList.contains('light-mode');
 
-    // 1. Update Fog Color (prevents the "black haze")
-    // Light mode fog should match your CSS --bg-color
-    scene.fog.color.setHex(isLight ? 0xf4f7f6 : 0x000000);
+        // 1. Update Fog Color (Matches the CSS background)
+        scene.fog.color.setHex(isLight ? 0xf4f7f6 : 0x000000);
 
-    // 2. Update Ambient Light (Witch needs to be brighter in light mode)
-    ambient.intensity = isLight ? 2.2 : 1.2;
+        // 2. Update Ambient Light (Brighter witch in light mode)
+        ambient.intensity = isLight ? 2.5 : 1.2;
 
-    // 3. Update Particles (Cyan looks better slightly darker in light mode)
-    particlesMaterial.color.setHex(isLight ? 0x0077ff : 0x00ffee);
-    particlesMaterial.opacity = isLight ? 0.5 : 0.25;
+        // 3. Update Particles
+        particlesMaterial.color.setHex(isLight ? 0x0077ff : 0x00ffee);
+        particlesMaterial.opacity = isLight ? 0.5 : 0.25;
+    }, 10);
   });
 }
 
-// ANIMATE (No changes here)
+// ANIMATE
 let time = 0;
 function animate() {
   requestAnimationFrame(animate);
@@ -102,7 +103,7 @@ function animate() {
 }
 animate();
 
-// RESPONSIVE (No changes here)
+// RESPONSIVE
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
