@@ -1,28 +1,24 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-// SCENE — NO background so HTML canvas shows through
+// SCENE
 const scene = new THREE.Scene();
-// NO scene.background — keep it null for full transparency
-scene.fog = new THREE.FogExp2(0x000000, 0.018);
+// Changed to 'let' so we can update it later
+let fog = new THREE.FogExp2(0x000000, 0.018);
+scene.fog = fog;
 
 // CAMERA
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 2, 25);
 
-// RENDERER — alpha: true makes it transparent
+// RENDERER
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setClearColor(0x000000, 0); // fully transparent clear
+renderer.setClearColor(0x000000, 0); 
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-// LIGHTING
+// LIGHTING - Use 'const' or 'let' so the theme toggle can access them
 const ambient = new THREE.AmbientLight(0xffffff, 1.2);
 scene.add(ambient);
 
@@ -41,14 +37,10 @@ scene.add(backLight);
 // LOAD WITCH MODEL
 const loader = new GLTFLoader();
 let witch;
-
 loader.load('models/witch.glb', (gltf) => {
   witch = gltf.scene;
   witch.scale.set(12, 12, 12);
-
-  // Start closer so it's visible immediately
   witch.position.set(0, 0, -10);
-
   scene.add(witch);
 });
 
@@ -56,11 +48,9 @@ loader.load('models/witch.glb', (gltf) => {
 const particlesGeometry = new THREE.BufferGeometry();
 const count = 1500;
 const positions = new Float32Array(count * 3);
-
 for (let i = 0; i < count * 3; i++) {
   positions[i] = (Math.random() - 0.5) * 80;
 }
-
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
 const particlesMaterial = new THREE.PointsMaterial({
@@ -73,32 +63,46 @@ const particlesMaterial = new THREE.PointsMaterial({
 const particles = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particles);
 
-// ANIMATE
-let time = 0;
+// --- NEW: THEME TOGGLE SYNC ---
+// This part listens to the button in your HTML
+const themeBtn = document.getElementById('theme-toggle');
 
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    // We check if the body has the class AFTER the click
+    const isLight = document.body.classList.contains('light-mode');
+
+    // 1. Update Fog Color (prevents the "black haze")
+    // Light mode fog should match your CSS --bg-color
+    scene.fog.color.setHex(isLight ? 0xf4f7f6 : 0x000000);
+
+    // 2. Update Ambient Light (Witch needs to be brighter in light mode)
+    ambient.intensity = isLight ? 2.2 : 1.2;
+
+    // 3. Update Particles (Cyan looks better slightly darker in light mode)
+    particlesMaterial.color.setHex(isLight ? 0x0077ff : 0x00ffee);
+    particlesMaterial.opacity = isLight ? 0.5 : 0.25;
+  });
+}
+
+// ANIMATE (No changes here)
+let time = 0;
 function animate() {
   requestAnimationFrame(animate);
   time += 0.01;
-
   if (witch) {
     witch.position.z += 0.08;
     witch.position.x = Math.sin(time) * 3;
     witch.position.y = Math.sin(time * 2) * 1.2;
     witch.rotation.z = Math.sin(time) * 0.2;
-
-    // Loop reset
-    if (witch.position.z > 10) {
-      witch.position.z = -40;
-    }
+    if (witch.position.z > 10) witch.position.z = -40;
   }
-
   particles.rotation.y += 0.0007;
   renderer.render(scene, camera);
 }
-
 animate();
 
-// RESPONSIVE
+// RESPONSIVE (No changes here)
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();

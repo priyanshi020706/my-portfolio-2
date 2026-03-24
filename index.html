@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
 
   <nav class="navbar">
-    <div class="logo">🧙‍♀️ PS</div>
+    <div class="logo">PS</div>
 
     <div class="nav-links">
       <a href="#about">About</a>
@@ -21,9 +20,18 @@
     </div>
 
     <div class="nav-icons">
-      <a href="https://github.com/priyanshi020706" target="_blank">🐙</a>
-      <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">💼</a>
-      <a href="mailto:priyanshisoni2706@gmail.com">📧</a>
+      <button id="theme-toggle" class="theme-btn" title="Toggle Light/Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="https://github.com/priyanshi020706" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="mailto:priyanshisoni2706@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
     </div>
   </nav>
 
@@ -33,16 +41,13 @@
       <div class="about-box">
         <h1 class="title">Priyanshi Soni</h1>
         <p class="subtitle">Frontend Developer & Tech Explorer</p>
-
         <p class="about-text">
           Passionately building immersive digital experiences and solving real-world problems.
           Currently pursuing B.Tech in Mathematics & Computing at MITS-DU, Gwalior.
         </p>
-
         <p class="about-text highlight">
           I want to become a Frontend Developer and create visually stunning, interactive web experiences.
         </p>
-
         <p class="quote">
           "Mujhe bhagna hai, girna hai, thakna hai, par... rukna nahi hai."
         </p>
@@ -50,7 +55,7 @@
     </section>
 
     <section class="section" id="skills">
-      <h2>🛠️ Skills</h2>
+      <h2>Skills</h2>
       <div class="skills">
         <span>HTML</span>
         <span>CSS</span>
@@ -64,27 +69,26 @@
     </section>
 
     <section class="section" id="projects">
-      <h2>🚀 Projects</h2>
-
+      <h2>Projects</h2>
       <div class="projects-grid">
 
         <div class="card">
-          <h3>🧠 Moody Shinchu</h3>
-          <p>Shinchan mood-based chat app (13 moods)</p>
+          <h3>Moody Shinchu</h3>
+          <p>Shinchan mood-based chat app with 13 moods and smart keyword detection.</p>
           <div class="tags">AI · Fun · Interactive</div>
           <div class="links">
-            <a href="https://priyanshi020706.github.io/Moody-Shinchu" target="_blank">🌐 Live</a>
-            <a href="https://github.com/priyanshi020706/Moody-Shinchu" target="_blank">💻 Code</a>
+            <a href="https://priyanshi020706.github.io/Moody-Shinchu" target="_blank">Live</a>
+            <a href="https://github.com/priyanshi020706/Moody-Shinchu" target="_blank">Code</a>
           </div>
         </div>
 
         <div class="card">
-          <h3>📝 Todo App</h3>
-          <p>Animated task manager</p>
+          <h3>Todo App</h3>
+          <p>Pastel animated task manager with animals. Data saved in browser.</p>
           <div class="tags">UI · Productivity</div>
           <div class="links">
-            <a href="https://priyanshi020706.github.io/To-do-list" target="_blank">🌐 Live</a>
-            <a href="https://github.com/priyanshi020706/To-do-list" target="_blank">💻 Code</a>
+            <a href="https://priyanshi020706.github.io/To-do-list" target="_blank">Live</a>
+            <a href="https://github.com/priyanshi020706/To-do-list" target="_blank">Code</a>
           </div>
         </div>
 
@@ -92,24 +96,20 @@
     </section>
 
     <section class="section" id="contact">
-      <h2>📬 Contact</h2>
+      <h2>Contact</h2>
       <div class="contact-box">
-
         <div class="contact-item">
           <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:priyanshisoni2706@gmail.com">email</a>
+          <a href="mailto:priyanshisoni2706@gmail.com">priyanshisoni2706@gmail.com</a>
         </div>
-
         <div class="contact-item">
           <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/priyanshi020706" target="_blank">github</a>
+          <a href="https://github.com/priyanshi020706" target="_blank">github.com/priyanshi020706</a>
         </div>
-
         <div class="contact-item">
           <i class="fa-brands fa-linkedin"></i>
-          <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">LinkedIn</a>
+          <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">linkedin.com/in/priyanshi-soni</a>
         </div>
-
       </div>
     </section>
 
@@ -118,16 +118,24 @@
   <script type="module" src="./main.js"></script>
 
   <script>
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.15 });
+    document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
-    document.querySelectorAll('.section').forEach(sec => {
-      observer.observe(sec);
+    // Theme toggle
+    const btn = document.getElementById('theme-toggle');
+    const icon = btn.querySelector('i');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        icon.className = 'fa-solid fa-sun';
+      } else {
+        icon.className = 'fa-solid fa-moon';
+      }
     });
   </script>
 
