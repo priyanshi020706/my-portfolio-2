@@ -95,10 +95,24 @@ if (themeBtn) {
 let mouseX = 0;
 let mouseY = 0;
 
-window.addEventListener('mousemove', (event) => {
-  // Converts mouse position to a coordinate system Three.js understands (-1 to +1)
-  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+window.addEventListener('scroll', () => {
+  let current = '';
+  const sections = document.querySelectorAll('.section');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 150) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href').includes(current)) {
+      item.classList.add('active');
+    }
+  });
 });
 
 // 2. Updated ANIMATE
