@@ -1,142 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Priyanshi Soni</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshi Soni | Frontend Developer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&family=Fira+Code:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">🧙‍♀️ PS</div>
-
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+ 
+    <!-- Floating theme toggle only -->
+    <div class="floating-controls">
+        <button id="theme-toggle" class="theme-btn" title="Toggle Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
     </div>
-
-    <div class="nav-icons">
-      <a href="https://github.com/priyanshi020706" target="_blank">🐙</a>
-      <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">💼</a>
-      <a href="mailto:priyanshisoni2706@gmail.com">📧</a>
+ 
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+ 
+    <div class="overlay">
+ 
+        <!-- HERO / ABOUT -->
+        <section class="section" id="about">
+            <div class="about-box">
+                <div class="about-meta">
+                    <span class="badge-pill"><i class="fa-solid fa-location-dot"></i> Morena, M.P., India</span>
+                    <span class="badge-pill"><i class="fa-solid fa-graduation-cap"></i> MITS-DU, Gwalior</span>
+                    <span class="badge-pill badge-live"><span class="dot-pulse"></span> Open to opportunities</span>
+                </div>
+                <h1 class="title">Priyanshi <span class="accent-magenta">Soni</span></h1>
+                <p class="subtitle">Frontend Developer <span class="sep">×</span> Mathematics & Computing <span class="sep">×</span> IEEE Content Writer</p>
+                <p class="about-text">
+                    I bridge the gap between <span class="text-glow">complex logic</span> and <span class="text-glow-magenta">beautiful design</span>. Currently pursuing my <b>B.Tech in Mathematics & Computing (1st Year)</b> at MITS-DU, Gwalior — I specialize in crafting interactive web experiences that feel like magic.
+                    <br><br>
+                    When I'm not debugging, I'm writing tech content for <b>IEEE IAS Society</b>, designing on Canva, dancing, or building AI-powered apps using nothing but HTML, CSS & JavaScript. Oh, and I'm also working on a <span class="text-glow">Voter Awareness App</span> — because civic tech matters.
+                </p>
+ 
+                <div class="about-highlights">
+                    <div class="highlight-card">
+                        <span class="hl-number">3+</span>
+                        <span class="hl-label">Projects Built</span>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="hl-number">IEEE</span>
+                        <span class="hl-label">Content Writer</span>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="hl-number">GCP</span>
+                        <span class="hl-label">Skill Badges</span>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="hl-number">AI</span>
+                        <span class="hl-label">Prompt Expert</span>
+                    </div>
+                </div>
+ 
+                <p class="quote">
+                    "Mujhe bhagna hai, girna hai, thakna hai, <span class="highlight">par... rukna nahi hai.</span>"
+                </p>
+ 
+                <div class="about-cta">
+                    <a href="#projects" class="cta-btn cta-primary">View My Work <i class="fa-solid fa-arrow-down"></i></a>
+                    <a href="#contact" class="cta-btn cta-secondary">Let's Connect</a>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="section-label">What I Know</div>
+            <h2 class="section-heading">Technical <span class="accent-magenta">Arsenal</span></h2>
+            <div class="skills-grid">
+                <div class="skill-badge" data-skill="js">
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-js" style="color:#f7df1e;"></i></div>
+                    <span>JavaScript</span><span class="sub-label">ES6+ & Async</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:70%"></div></div>
+                    <span class="skill-tag">Intermediate</span>
+                </div>
+                <div class="skill-badge" data-skill="cpp">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-code" style="color:#00599c;"></i></div>
+                    <span>C / C++</span><span class="sub-label">DSA & OOPs</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:65%"></div></div>
+                    <span class="skill-tag">Intermediate</span>
+                </div>
+                <div class="skill-badge" data-skill="py">
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-python" style="color:#3776ab;"></i></div>
+                    <span>Python</span><span class="sub-label">Logic & Scripting</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:65%"></div></div>
+                    <span class="skill-tag">Intermediate</span>
+                </div>
+                <div class="skill-badge" data-skill="html">
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-html5" style="color:#e34f26;"></i></div>
+                    <span>HTML5</span><span class="sub-label">Structure & SEO</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:92%"></div></div>
+                    <span class="skill-tag">Advanced</span>
+                </div>
+                <div class="skill-badge" data-skill="css">
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-css3-alt" style="color:#264de4;"></i></div>
+                    <span>CSS3</span><span class="sub-label">Animations & FX</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:90%"></div></div>
+                    <span class="skill-tag">Advanced</span>
+                </div>
+                <div class="skill-badge" data-skill="threejs">
+                    <div class="skill-icon-wrap" style="font-size:1.4rem;">⬡</div>
+                    <span>Three.js</span><span class="sub-label">3D Web Scenes</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:55%"></div></div>
+                    <span class="skill-tag">Learning</span>
+                </div>
+                <div class="skill-badge" data-skill="git">
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-github"></i></div>
+                    <span>Git & GitHub</span><span class="sub-label">Version Control</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:68%"></div></div>
+                    <span class="skill-tag">Intermediate</span>
+                </div>
+                <div class="skill-badge" data-skill="cloud">
+                    <div class="skill-icon-wrap"><i class="fa-brands fa-google" style="color:#4285f4;"></i></div>
+                    <span>Google Cloud</span><span class="sub-label">Skill Badges</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:60%"></div></div>
+                    <span class="skill-tag">Certified</span>
+                </div>
+                <div class="skill-badge" data-skill="canva">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-pen-nib" style="color:#00c4cc;"></i></div>
+                    <span>Canva</span><span class="sub-label">Design & Visuals</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:90%"></div></div>
+                    <span class="skill-tag">Advanced</span>
+                </div>
+                <div class="skill-badge" data-skill="ai">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-robot" style="color:#ff00ff;"></i></div>
+                    <span>AI Prompting</span><span class="sub-label">LLM & Workflows</span>
+                    <div class="skill-level"><div class="skill-bar" style="--w:95%"></div></div>
+                    <span class="skill-tag">Expert</span>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- TECHNOLOGIES USED IN THIS WEBSITE -->
+        <section class="section" id="technologies">
+            <div class="section-label">Under the Hood</div>
+            <h2 class="section-heading">Built <span class="accent-magenta">With</span></h2>
+            <p class="tech-intro">This portfolio isn't just designed — it's engineered. Here's every technology that powers this experience:</p>
+            <div class="tech-showcase">
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-brands fa-html5" style="color:#e34f26;font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">HTML5</span>
+                        <span class="tech-desc">Semantic structure, accessibility-first markup, section-based layout.</span>
+                    </div>
+                    <span class="tech-badge">Structure</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-brands fa-css3-alt" style="color:#264de4;font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">CSS3</span>
+                        <span class="tech-desc">Custom properties, glassmorphism, keyframe animations, scroll transitions.</span>
+                    </div>
+                    <span class="tech-badge">Styling</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-brands fa-js" style="color:#f7df1e;font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">Vanilla JavaScript</span>
+                        <span class="tech-desc">ES6 modules, Intersection Observer API, theme switching, scroll logic.</span>
+                    </div>
+                    <span class="tech-badge">Logic</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring" style="font-size:2rem;">⬡</div>
+                    <div class="tech-info">
+                        <span class="tech-name">Three.js</span>
+                        <span class="tech-desc">WebGL 3D renderer, GLTF model loading, animated scene with alpha canvas.</span>
+                    </div>
+                    <span class="tech-badge">3D Engine</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-brands fa-font-awesome" style="color:#528dd7;font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">Font Awesome 6</span>
+                        <span class="tech-desc">Icon library for tech badges, contact buttons, and UI accents.</span>
+                    </div>
+                    <span class="tech-badge">Icons</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-solid fa-font" style="color:#ff00ff;font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">Google Fonts</span>
+                        <span class="tech-desc">Syne for headings, Space Grotesk for body — a refined typographic pair.</span>
+                    </div>
+                    <span class="tech-badge">Typography</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-brands fa-github" style="font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">GitHub Pages</span>
+                        <span class="tech-desc">Zero-config static hosting. Deployed directly from the main branch.</span>
+                    </div>
+                    <span class="tech-badge">Hosting</span>
+                </div>
+ 
+                <div class="tech-item">
+                    <div class="tech-icon-ring">
+                        <i class="fa-solid fa-eye" style="color:#00ffee;font-size:2rem;"></i>
+                    </div>
+                    <div class="tech-info">
+                        <span class="tech-name">Intersection Observer</span>
+                        <span class="tech-desc">Native browser API for smooth scroll-reveal animations on every section.</span>
+                    </div>
+                    <span class="tech-badge">Animation</span>
+                </div>
+ 
+            </div>
+        </section>
+ 
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <div class="section-label">What I've Made</div>
+            <h2 class="section-heading">My <span class="accent-magenta">Creations</span></h2>
+            <div class="projects-grid">
+ 
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div class="card-header">
+                        <span class="card-num">01</span>
+                        <div class="card-status"><span class="dot-pulse"></span> Live</div>
+                    </div>
+                    <h3>Moody Shinchu</h3>
+                    <div class="tech-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Sentiment API</span>
+                        <span class="tag">13 Moods</span>
+                    </div>
+                    <p>A Shinchan-themed mood detector using keyword sentiment analysis. Chat with Shinchan — it detects your vibe from 13 emotional states.</p>
+                    <div class="links">
+                        <a href="https://priyanshi020706.github.io/Moody-Shinchu" target="_blank" class="link-btn link-live"><i class="fa-solid fa-rocket"></i> Live View</a>
+                        <a href="https://github.com/priyanshi020706/Moody-Shinchu" target="_blank" class="link-btn link-src"><i class="fa-brands fa-github"></i> Source</a>
+                    </div>
+                </div>
+ 
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div class="card-header">
+                        <span class="card-num">02</span>
+                        <div class="card-status"><span class="dot-pulse"></span> Live</div>
+                    </div>
+                    <h3>To-do List</h3>
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">Local Storage</span>
+                    </div>
+                    <p>A sleek, pastel-animated task manager featuring cute animal avatars. Tasks persist across sessions using Local Storage.</p>
+                    <div class="links">
+                        <a href="https://priyanshi020706.github.io/To-do-list" target="_blank" class="link-btn link-live"><i class="fa-solid fa-rocket"></i> Live View</a>
+                        <a href="https://github.com/priyanshi020706/To-do-list" target="_blank" class="link-btn link-src"><i class="fa-brands fa-github"></i> Source</a>
+                    </div>
+                </div>
+ 
+                <div class="card card-coming">
+                    <div class="card-glow"></div>
+                    <div class="card-header">
+                        <span class="card-num">03</span>
+                        <div class="card-status status-building"><i class="fa-solid fa-hammer"></i> Building</div>
+                    </div>
+                    <h3>Voter Awareness App</h3>
+                    <div class="tech-tags">
+                        <span class="tag">Civic Tech</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <p>A civic tech project fighting electoral corruption through voter education, awareness campaigns, and interactive tools.</p>
+                    <div class="links">
+                        <span class="link-btn link-wip"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                    </div>
+                </div>
+ 
+            </div>
+        </section>
+ 
+        <!-- ACHIEVEMENTS -->
+        <section class="section" id="achievements">
+            <div class="section-label">Recognition</div>
+            <h2 class="section-heading">Achievements <span class="accent-magenta">&</span> Beyond</h2>
+            <div class="achievements-grid">
+                <div class="achieve-card">
+                    <div class="achieve-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="achieve-text">
+                        <span class="achieve-title">Workshop Certificates</span>
+                        <span class="achieve-desc">Multiple certificates from technical workshops — proof of continuous learning.</span>
+                    </div>
+                </div>
+                <div class="achieve-card">
+                    <div class="achieve-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <div class="achieve-text">
+                        <span class="achieve-title">IEEE IAS Content Writer</span>
+                        <span class="achieve-desc">Writing technical content at IEEE IAS Society, MITS-DU.</span>
+                    </div>
+                </div>
+                <div class="achieve-card">
+                    <div class="achieve-icon"><i class="fa-brands fa-google"></i></div>
+                    <div class="achieve-text">
+                        <span class="achieve-title">Google Cloud Skill Badges</span>
+                        <span class="achieve-desc">Verified Google Cloud certifications through hands-on skill challenges.</span>
+                    </div>
+                </div>
+                <div class="achieve-card">
+                    <div class="achieve-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <div class="achieve-text">
+                        <span class="achieve-title">AI-Powered Web Apps</span>
+                        <span class="achieve-desc">Built multiple AI-integrated apps using pure HTML, CSS & JavaScript.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div class="section-label">Say Hello</div>
+            <h2 class="section-heading">Let's <span class="accent-magenta">Connect</span></h2>
+            <p class="contact-sub">I'm always open to interesting conversations, collaborations, or just a good chat about tech and design.</p>
+            <div class="contact-grid">
+                <a href="mailto:priyanshisoni2706@gmail.com" class="contact-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email Me</span>
+                    <span class="contact-sub-label">priyanshisoni2706@gmail.com</span>
+                </a>
+                <a href="https://github.com/priyanshi020706" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                    <span class="contact-sub-label">priyanshi020706</span>
+                </a>
+                <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                    <span class="contact-sub-label">Connect with me</span>
+                </a>
+            </div>
+            <p class="fun-fact">"I am a delightfully delusional person who loves living in her own bubble — doing things only when the heart says so, forever chasing dreams others cannot see 🌙"</p>
+        </section>
     </div>
-  </nav>
-
-  <!-- OVERLAY -->
-  <div class="overlay">
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="about-box">
-        <h1 class="title">Priyanshi Soni</h1>
-        <p class="subtitle">Frontend Developer & Tech Explorer</p>
-
-        <p class="about-text">
-          Passionate about building immersive digital experiences and solving real-world problems.
-          Currently pursuing B.Tech in Mathematics & Computing at MITS-DU, Gwalior.
-        </p>
-
-        <p class="about-text highlight">
-          I want to become a Frontend Developer and create visually stunning, interactive web experiences.
-        </p>
-
-        <p class="quote">
-          "Mujhe bhagna hai, girna hai, thakna hai, par... rukna nahi hai."
-        </p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <h2>🛠️ Skills</h2>
-      <div class="skills">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>C++</span>
-        <span>Python</span>
-        <span>Git</span>
-        <span>Node.js</span>
-        <span>GitHub</span>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <h2>🚀 Projects</h2>
-
-      <div class="projects-grid">
-
-        <div class="card">
-          <h3>🧠 Moody Shinchu</h3>
-          <p>Shinchan mood-based chat app (13 moods)</p>
-          <div class="tags">AI · Fun · Interactive</div>
-          <div class="links">
-            <a href="https://priyanshi020706.github.io/Moody-Shinchu" target="_blank">🌐 Live</a>
-            <a href="https://github.com/priyanshi020706/Moody-Shinchu" target="_blank">💻 Code</a>
-          </div>
+ 
+    <footer>
+        <div class="footer-nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#technologies">Technologies</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </div>
-
-        <div class="card">
-          <h3>📝 Todo App</h3>
-          <p>Animated task manager</p>
-          <div class="tags">UI · Productivity</div>
-          <div class="links">
-            <a href="https://priyanshi020706.github.io/To-do-list" target="_blank">🌐 Live</a>
-            <a href="https://github.com/priyanshi020706/To-do-list" target="_blank">💻 Code</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <h2>📬 Contact</h2>
-      <div class="contact-box">
-
-        <div class="contact-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:priyanshisoni2706@gmail.com">priyanshisoni2706@gmail.com</a>
-        </div>
-
-        <div class="contact-item">
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/priyanshi020706" target="_blank">github.com/priyanshi020706</a>
-        </div>
-
-        <div class="contact-item">
-          <i class="fa-brands fa-linkedin"></i>
-          <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">LinkedIn Profile</a>
-        </div>
-
-      </div>
-    </section>
-
-  </div>
-
-  <script type="module" src="/main.js"></script>
-
-  <!-- SCROLL REVEAL -->
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.section').forEach(sec => {
-      observer.observe(sec);
-    });
-  </script>
-
+        <p class="footer-line">Designed & Built by <span class="highlight">Priyanshi Soni</span> · B.Tech Mathematics & Computing · MITS-DU</p>
+    </footer>
+ 
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
