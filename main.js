@@ -1,7 +1,6 @@
 // Changed these to CDN links so GitHub doesn't ask for package-lock.json
-import * as THREE from 'https://cdn.skypack.dev/three@0.160.0';
-import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
-
+import * as THREE from 'https://esm.sh/three@0.160.0';
+import { GLTFLoader } from 'https://esm.sh/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
 // SCENE
 const scene = new THREE.Scene();
 // Changed to 'let' so we can update it later
