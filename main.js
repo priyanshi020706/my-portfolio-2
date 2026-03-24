@@ -72,7 +72,7 @@ if (themeBtn) {
     setTimeout(() => {
         const isLight = document.body.classList.contains('light-mode');
 
-        // 1. Update Fog Color (Matches the CSS background)
+        // 1. Update Fog Color (Matches the CSS background hex)
         scene.fog.color.setHex(isLight ? 0xf4f7f6 : 0x000000);
 
         // 2. Update Ambient Light (Brighter witch in light mode)
@@ -81,27 +81,68 @@ if (themeBtn) {
         // 3. Update Particles
         particlesMaterial.color.setHex(isLight ? 0x0077ff : 0x00ffee);
         particlesMaterial.opacity = isLight ? 0.5 : 0.25;
+
+        // 4. THE FIX: Update Renderer Clear Color
+        // This makes the 3D background match your CSS exactly
+        // Syntax: renderer.setClearColor(color, opacity)
+        renderer.setClearColor(isLight ? 0xf4f7f6 : 0x000000, isLight ? 1 : 0);
+        
     }, 10);
   });
 }
 
-// ANIMATE
+/// 1. Setup Mouse Tracking (Add this outside the function)
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener('mousemove', (event) => {
+  // Converts mouse position to a coordinate system Three.js understands (-1 to +1)
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+// 2. Updated ANIMATE
 let time = 0;
+
 function animate() {
   requestAnimationFrame(animate);
   time += 0.01;
+
   if (witch) {
+    // Movement Logic
     witch.position.z += 0.08;
     witch.position.x = Math.sin(time) * 3;
     witch.position.y = Math.sin(time * 2) * 1.2;
+    
+    // Magical Tilting: The witch now "leans" into her turns
     witch.rotation.z = Math.sin(time) * 0.2;
+    witch.rotation.y = (mouseX * 0.5); // Witch subtly looks toward your mouse
+    
+    // Reset position
     if (witch.position.z > 10) witch.position.z = -40;
   }
+
+  // MAGICAL EFFECT: Particles now drift subtly toward your mouse cursor
+  // This makes the "space" feel interactive and alive
   particles.rotation.y += 0.0007;
+  particles.position.x += (mouseX * 0.5 - particles.position.x) * 0.02;
+  particles.position.y += (mouseY * 0.5 - particles.position.y) * 0.02;
+
   renderer.render(scene, camera);
 }
-animate();
 
+animate();
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('section').forEach(section => {
+  observer.observe(section);
+});
 // RESPONSIVE
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
