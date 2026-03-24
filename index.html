@@ -1,106 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyanshi Soni | Frontend Developer</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priyanshi Soni</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
-    <nav class="navbar">
-        <div class="logo">PS</div>
-        <div class="nav-links">
-            <a href="#about" class="nav-item">About</a>
-            <a href="#skills" class="nav-item">Skills</a>
-            <a href="#projects" class="nav-item">Projects</a>
-            <a href="#contact" class="nav-item">Contact</a>
-        </div>
-        <div class="nav-icons">
-            <button id="theme-toggle" class="theme-btn" title="Toggle Mode">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </div>
-    </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🧙‍♀️ PS</div>
 
-    <div class="overlay">
-        
-        <section class="section" id="about">
-            <div class="about-box">
-                <h1 class="title">Priyanshi <span class="accent-magenta">Soni</span></h1>
-                <p class="subtitle">Frontend Developer & Mathematics-Computing Enthusiast</p>
-                <p class="about-text">
-                    I bridge the gap between complex logic and beautiful design. Currently pursuing my <b>B.Tech at MITS-DU</b>, I specialize in crafting interactive web experiences that feel like magic. 
-                    <br><br>
-                    When I'm not debugging, I’m exploring the world of 3D web graphics or solving mathematical puzzles.
-                </p>
-                <p class="quote">
-                    "Mujhe bhagna hai, girna hai, thakna hai, <span class="highlight">par... rukna nahi hai.</span>"
-                </p>
-            </div>
-        </section>
-
-        <section class="section" id="skills">
-            <h2 class="section-heading">Technical Arsenal</h2>
-            <div class="skills-grid">
-                <div class="skill-badge" data-skill="js"><i class="fa-brands fa-js" style="color: #f7df1e;"></i><span>JavaScript</span><span class="sub-label">ES6+ & Async</span></div>
-                <div class="skill-badge" data-skill="cpp"><i class="fa-solid fa-code" style="color: #00599c;"></i><span>C++</span><span class="sub-label">DSA & OOPs</span></div>
-                <div class="skill-badge" data-skill="py"><i class="fa-brands fa-python" style="color: #3776ab;"></i><span>Python</span><span class="sub-label">Logic & Scripting</span></div>
-                <div class="skill-badge" data-skill="html"><i class="fa-brands fa-html5" style="color: #e34f26;"></i><span>HTML5</span><span class="sub-label">Structure</span></div>
-                <div class="skill-badge" data-skill="html"><i class="fa-brands fa-css3-alt" style="color: #264de4;"></i><span>CSS3</span><span class="sub-label">Animations/FX</span></div>
-                <div class="skill-badge" data-skill="js"><i class="fa-brands fa-react"></i><span>Three.js</span><span class="sub-label">3D Web Scenes</span></div>
-                <div class="skill-badge" data-skill="py"><i class="fa-brands fa-github"></i><span>GitHub</span><span class="sub-label">Version Control</span></div>
-                <div class="skill-badge" data-skill="cpp"><i class="fa-brands fa-node-js" style="color: #68a063;"></i><span>Node.js</span><span class="sub-label">Backend Basics</span></div>
-            </div>
-        </section>
-
-        <section class="section" id="projects">
-            <h2 class="section-heading">My Creations</h2>
-            <div class="projects-grid">
-                <div class="card">
-                    <h3>Moody Shinchu</h3>
-                    <div class="tech-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Sentiment API</span>
-                    </div>
-                    <p>A Shinchan-themed mood detector using keyword sentiment analysis.</p>
-                    <div class="links">
-                        <a href="https://priyanshi020706.github.io/Moody-Shinchu" target="_blank">Live View</a>
-                        <a href="https://github.com/priyanshi020706/Moody-Shinchu" target="_blank"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>To-do List</h3>
-                    <div class="tech-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">Local Storage</span>
-                    </div>
-                    <p>A sleek, animated task manager featuring cute animal avatars.</p>
-                    <div class="links">
-                        <a href="https://priyanshi020706.github.io/To-do-list" target="_blank">Live View</a>
-                        <a href="https://github.com/priyanshi020706/To-do-list" target="_blank"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contact">
-            <h2 class="section-heading">Let's Connect</h2>
-            <div class="contact-grid">
-                <a href="mailto:priyanshisoni2706@gmail.com" class="contact-btn"><i class="fa-solid fa-envelope"></i> Email</a>
-                <a href="https://github.com/priyanshi020706" target="_blank" class="contact-btn"><i class="fa-brands fa-github"></i> GitHub</a>
-                <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank" class="contact-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            </div>
-        </section>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
 
-    <footer>
-        <p class="footer-line">Designed & Built by <span class="highlight">Priyanshi Soni</span></p>
-    </footer>
+    <div class="nav-icons">
+      <a href="https://github.com/priyanshi020706" target="_blank">🐙</a>
+      <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">💼</a>
+      <a href="mailto:priyanshisoni2706@gmail.com">📧</a>
+    </div>
+  </nav>
 
-    <script type="module" src="./main.js"></script>
+  <!-- OVERLAY -->
+  <div class="overlay">
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="about-box">
+        <h1 class="title">Priyanshi Soni</h1>
+        <p class="subtitle">Frontend Developer & Tech Explorer</p>
+
+        <p class="about-text">
+          Passionate about building immersive digital experiences and solving real-world problems.
+          Currently pursuing B.Tech in Mathematics & Computing at MITS-DU, Gwalior.
+        </p>
+
+        <p class="about-text highlight">
+          I want to become a Frontend Developer and create visually stunning, interactive web experiences.
+        </p>
+
+        <p class="quote">
+          "Mujhe bhagna hai, girna hai, thakna hai, par... rukna nahi hai."
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <h2>🛠️ Skills</h2>
+      <div class="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>C++</span>
+        <span>Python</span>
+        <span>Git</span>
+        <span>Node.js</span>
+        <span>GitHub</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2>🚀 Projects</h2>
+
+      <div class="projects-grid">
+
+        <div class="card">
+          <h3>🧠 Moody Shinchu</h3>
+          <p>Shinchan mood-based chat app (13 moods)</p>
+          <div class="tags">AI · Fun · Interactive</div>
+          <div class="links">
+            <a href="https://priyanshi020706.github.io/Moody-Shinchu" target="_blank">🌐 Live</a>
+            <a href="https://github.com/priyanshi020706/Moody-Shinchu" target="_blank">💻 Code</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📝 Todo App</h3>
+          <p>Animated task manager</p>
+          <div class="tags">UI · Productivity</div>
+          <div class="links">
+            <a href="https://priyanshi020706.github.io/To-do-list" target="_blank">🌐 Live</a>
+            <a href="https://github.com/priyanshi020706/To-do-list" target="_blank">💻 Code</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2>📬 Contact</h2>
+      <div class="contact-box">
+
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:priyanshisoni2706@gmail.com">priyanshisoni2706@gmail.com</a>
+        </div>
+
+        <div class="contact-item">
+          <i class="fa-brands fa-github"></i>
+          <a href="https://github.com/priyanshi020706" target="_blank">github.com/priyanshi020706</a>
+        </div>
+
+        <div class="contact-item">
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="https://linkedin.com/in/priyanshi-soni-325212359" target="_blank">LinkedIn Profile</a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script type="module" src="/main.js"></script>
+
+  <!-- SCROLL REVEAL -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.section').forEach(sec => {
+      observer.observe(sec);
+    });
+  </script>
+
 </body>
 </html>
