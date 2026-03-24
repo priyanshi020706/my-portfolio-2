@@ -47,7 +47,7 @@ html {
   scroll-padding-top: 100px;
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAVIGATION (Magnificent Glass Effect) ===== */
 .navbar {
   position: fixed;
   top: 25px;
@@ -56,16 +56,16 @@ html {
   width: 90%;
   max-width: 1200px;
   padding: 12px 40px;
-  background: var(--card-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-color);
+  background: rgba(3, 7, 18, 0.5); /* Modern Glass Fix */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  box-shadow: var(--border-glow);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -79,8 +79,11 @@ html {
   position: relative;
   text-decoration: none;
   color: var(--text-color);
-  font-weight: 600;
-  margin: 0 15px;
+  font-weight: 700;
+  margin: 0 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   transition: 0.3s;
 }
 
@@ -130,6 +133,17 @@ html {
 
 .section.visible { opacity: 1; transform: translateY(0); }
 
+.section-heading {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  margin-left: 10px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  background: var(--text-shimmer);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .about-box {
   background: var(--card-bg);
   backdrop-filter: var(--glass-blur);
@@ -167,39 +181,83 @@ html {
   to { opacity: 1; text-shadow: 0 0 20px var(--accent-magenta); }
 }
 
-/* ===== MAGICAL BENTO SKILLS ===== */
+/* ===== MAGICAL BENTO SKILLS (Elevation & Glow Tracking) ===== */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 25px;
+  justify-content: center;
   width: 100%;
 }
 
 .skill-badge {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
+  flex: 1 1 160px;
+  max-width: 200px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
   backdrop-filter: var(--glass-blur);
 }
 
+/* Icon Glow & Consistency */
 .skill-badge i {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 238, 0.3));
+  transition: 0.3s;
 }
 
-.skill-badge:hover {
-  transform: scale(1.1) translateY(-10px);
-  border-color: var(--accent-primary);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--border-glow);
+/* Sub-labels styling */
+.skill-badge .sub-label {
+  display: block;
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
+
+/* Hover State - The "Pop" */
+.skill-badge:hover {
+  transform: translateY(-12px) scale(1.05);
+  border-color: var(--accent-magenta);
+  background: rgba(255, 0, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.2);
+}
+
+.skill-badge:hover i {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 15px var(--accent-magenta));
+}
+
+/* Mouse Glow Tracking */
+.skill-badge::before {
+  content: '';
+  position: absolute;
+  top: var(--y, 0);
+  left: var(--x, 0);
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.15), transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.skill-badge:hover::before { opacity: 1; }
 
 /* ===== HOLOGRAM MAGENTA PROJECT CARDS ===== */
 .projects-grid {
@@ -279,10 +337,6 @@ html {
 .links a:hover {
   transform: scale(1.1) translateY(-5px);
   filter: brightness(1.2);
-}
-
-.links a:first-child:hover {
-  box-shadow: 0 0 30px #ff00ff, 0 0 60px rgba(255, 0, 255, 0.4);
 }
 
 /* ===== NEON CONTACT BUTTONS ===== */
