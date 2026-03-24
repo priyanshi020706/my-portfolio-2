@@ -3,25 +3,24 @@
 
 /* ===== THEME VARIABLES ===== */
 :root {
-  --bg-color: #050505;
-  --text-color: #ffffff;
-  --nav-bg: rgba(10, 10, 10, 0.4); /* Glassier */
-  --box-bg: rgba(255, 255, 255, 0.03);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --accent-cyan: #00ffee;
-  --accent-purple: #cc00ff;
+  --bg-color: #030712;
+  --text-color: #f8fafc;
+  --accent-primary: #00ffee; /* Neon Cyan */
+  --accent-secondary: #7000ff; /* Electric Purple */
+  --card-bg: rgba(15, 23, 42, 0.6);
   --border-color: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(15px);
+  --border-glow: 0 0 15px rgba(0, 255, 238, 0.3);
+  --glass-blur: blur(20px);
 }
 
 body.light-mode {
-  --bg-color: #f4f7f6;
-  --text-color: #1a1a2e;
-  --nav-bg: rgba(255, 255, 255, 0.6);
-  --box-bg: rgba(0, 0, 0, 0.02);
-  --card-bg: rgba(0, 0, 0, 0.03);
-  --accent-cyan: #0077ff; 
-  --border-color: rgba(0, 0, 0, 0.08);
+  --bg-color: #f1f5f9;
+  --text-color: #0f172a;
+  --accent-primary: #2563eb; /* Royal Blue */
+  --accent-secondary: #7c3aed;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-glow: 0 0 15px rgba(37, 99, 235, 0.2);
 }
 
 /* ===== RESET & BASE ===== */
@@ -39,67 +38,82 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+  scroll-padding-top: 100px;
+}
 
-/* ===== NAVIGATION (Floating Pill Design) ===== */
+/* ===== NAVIGATION (Magnificent Floating Command Center) ===== */
 .navbar {
   position: fixed;
-  top: 20px;
+  top: 25px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 1100px;
-  padding: 12px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--nav-bg);
+  max-width: 1200px;
+  padding: 12px 40px;
+  background: var(--card-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-color);
   border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 1000;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: var(--border-glow);
 }
 
 .logo {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
   letter-spacing: 1px;
 }
 
 .nav-links a {
-  margin: 0 15px;
-  color: var(--text-color);
+  position: relative;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  opacity: 0.7;
-  transition: 0.3s ease;
+  color: var(--text-color);
+  font-weight: 600;
+  margin: 0 15px;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0; height: 2px;
+  bottom: -5px; left: 0;
+  background: var(--accent-primary);
+  transition: 0.3s;
+  box-shadow: 0 0 10px var(--accent-primary);
 }
 
 .nav-links a:hover {
   opacity: 1;
-  color: var(--accent-cyan);
-  text-shadow: 0 0 10px var(--accent-cyan);
+  color: var(--accent-primary);
 }
 
-.nav-icons { display: flex; align-items: center; gap: 15px; }
+.nav-links a:hover::after { 
+  width: 100%; 
+}
 
-/* Theme Toggle Button Styling */
+.nav-icons { display: flex; align-items: center; gap: 20px; }
+
 .theme-btn {
   background: none;
   border: none;
   color: var(--text-color);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: transform 0.4s ease;
 }
 
 .theme-btn:hover {
   transform: scale(1.2) rotate(20deg);
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
 }
 
 /* ===== LAYOUT & SECTIONS ===== */
@@ -119,22 +133,22 @@ html { scroll-behavior: smooth; }
 
 .section.visible { opacity: 1; transform: translateY(0); }
 
-/* About Box Glassmorphism */
 .about-box {
-  background: var(--box-bg);
+  background: var(--card-bg);
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-color);
-  border-left: 4px solid var(--accent-cyan);
+  border-left: 5px solid var(--accent-primary);
   padding: 40px;
-  border-radius: 20px;
-  max-width: 700px;
+  border-radius: 24px;
+  max-width: 750px;
+  box-shadow: var(--border-glow);
 }
 
 /* Titles & Text */
 .title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
-  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), #fff, var(--accent-cyan));
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), #fff, var(--accent-primary));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -146,51 +160,115 @@ html { scroll-behavior: smooth; }
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
   margin-top: 10px;
+  letter-spacing: 1px;
 }
 
-/* ===== MAGICAL CARDS ===== */
+/* ===== MAGICAL BENTO SKILLS ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.skill-badge {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: var(--glass-blur);
+}
+
+.skill-badge i {
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skill-badge:hover {
+  transform: scale(1.1) translateY(-10px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--border-glow);
+}
+
+/* ===== HOLOGRAM PROJECT CARDS ===== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 35px;
   width: 100%;
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   background: var(--card-bg);
-  backdrop-filter: var(--glass-blur);
+  border-radius: 30px;
+  padding: 40px;
   border: 1px solid var(--border-color);
-  border-radius: 24px;
-  padding: 30px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: var(--glass-blur);
 }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.card:hover::before { opacity: 1; }
 
 .card:hover {
-  transform: translateY(-12px) scale(1.02);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transform: translateY(-15px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), var(--border-glow);
+  border-color: var(--accent-primary);
 }
 
-/* Skills Badges */
-.skills { display: flex; flex-wrap: wrap; gap: 15px; }
-
-.skills span {
-  padding: 12px 25px;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 50px;
-  font-weight: 500;
-  transition: 0.3s;
+/* ===== NEON CONTACT BUTTONS ===== */
+.contact-grid {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
 }
 
-.skills span:hover {
-  background: var(--accent-cyan);
-  color: #000;
-  border-color: var(--accent-cyan);
+.contact-btn {
+  padding: 15px 35px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.4s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: var(--glass-blur);
+}
+
+.contact-btn:hover {
+  background: var(--accent-primary);
+  color: #000 !important;
+  box-shadow: 0 0 40px var(--accent-primary);
   transform: translateY(-5px);
 }
 
@@ -199,44 +277,11 @@ canvas {
   position: fixed;
   top: 0; left: 0; z-index: -1;
 }
-/* Skills Icons Styling */
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: flex-start;
-}
 
-.skill-badge i {
-  margin-right: 8px;
-  color: var(--accent-cyan);
-}
-
-/* Named Contact Buttons */
-.contact-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.contact-btn {
-  text-decoration: none;
-  padding: 15px 30px;
-  background: var(--card-bg);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  backdrop-filter: var(--glass-blur);
-}
-
-.contact-btn:hover {
-  background: var(--accent-cyan);
-  color: #000;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 255, 238, 0.3);
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar { width: 95%; padding: 10px 20px; }
+  .nav-links { display: none; } /* Consider adding a burger menu for mobile */
+  .title { font-size: 3rem; }
+  .section { padding: 60px 0; }
 }
